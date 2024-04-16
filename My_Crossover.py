@@ -13,13 +13,7 @@ from jmetal.core.solution import (
 )
 from jmetal.util.ckecking import Check
 
-"""
-.. module:: crossover
-   :platform: Unix, Windows
-   :synopsis: Module implementing crossover operators.
 
-.. moduleauthor:: Antonio J. Nebro <antonio@lcc.uma.es>, Antonio Benítez-Hidalgo <antonio.b@uma.es>
-"""
 
 class Simple_Crossover(Crossover[FloatSolution, FloatSolution]):
     def __init__(self, n_D):
