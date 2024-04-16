@@ -31,17 +31,17 @@ from jmetal.util.solution import (
 
 
 
-max_evaluations = 6100
+max_evaluations = 6500
 swarm_size = 100
 problem = Alignment_Problem(16,2,False,swarm_size)
 mutation_probability = 1.0 / problem.number_of_variables()
-offspring_population_size = 60
-A_number = 5
+offspring_population_size = 64
+A_number = 8
 
 M_operators = [Uniform_Mutation(1.0, problem.n_D),
                       Straight_Mutation(1.0, problem.n_D),
-                      Nonuniform_Mutation(1.0, problem.n_D, 61, 1.0),
-                      Whole_Nonuniform_Mutation(1.0, problem.n_D, 61, 1.0)
+                      Nonuniform_Mutation(1.0, problem.n_D, 64, 1.0),
+                      Whole_Nonuniform_Mutation(1.0, problem.n_D, 64, 1.0)
                    ]
 
 C_operators = [Simple_Crossover(problem.n_D),
@@ -51,7 +51,7 @@ C_operators = [Simple_Crossover(problem.n_D),
 
 def configure_experiment(problems: dict, n_run: int):
 #    jobs = []
-    max_evaluations = 6100
+    max_evaluations = 6500
 
     for run in range(n_run):
         for problem_tag, problem in problems.items():
@@ -60,7 +60,7 @@ def configure_experiment(problems: dict, n_run: int):
                         algorithm=NSGAII(
                             problem=problem,
                             population_size=100,
-                            offspring_population_size=60,
+                            offspring_population_size=64,
                             mutation=PolynomialMutation(
                                 probability=mutation_probability, distribution_index=20
                             ),
@@ -107,7 +107,7 @@ def configure_experiment(problems: dict, n_run: int):
                 yield Job(
                         algorithm=My_NSGAII(problem=problem,
                                             population_size=swarm_size,
-                                            offspring_population_size = 60,
+                                            offspring_population_size = 64,
                                             mutation=PolynomialMutation(probability=1.0 * 1.0 / problem.number_of_variables(), distribution_index=20),
                                             crossover=SBXCrossover(probability=1.0, distribution_index=20),
                                             mutation_operators = M_operators,
